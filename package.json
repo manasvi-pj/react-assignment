@@ -20,6 +20,7 @@
     "@reduxjs/toolkit": "^2.5.1",
     "prettier": "^3.5.2",
     "react": "^19.0.0",
+    "react-assignment": "file:",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
     "react-hot-toast": "^2.5.2",
