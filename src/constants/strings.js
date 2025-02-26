@@ -3,6 +3,7 @@ export const strings = {
   reactTestTitle: 'React App',
   login: 'Login',
   logout: 'Logout',
+  profile: 'Profile',
 
   // ** Login
   submit: 'Submit',

@@ -7,7 +7,7 @@ import { Box, useMediaQuery, useTheme } from '@mui/material';
 
 // ** Components Imports
 import Sidebar from '../components/Sidebar/Sidebar';
-import Header from '../components/Header/Header';
+import Header from '../components/Header';
 
 const MainLayout = () => {
   // ** States

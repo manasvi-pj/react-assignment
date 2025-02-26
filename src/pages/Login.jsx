@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { strings } from '../constants/strings';
 
 // ** Components Imports
-import BackGroundImage from '../components/BackgroundImage/BackgroundImage';
+import BackGroundImage from '../components/BackgroundImage';
 
 // ** MUI Imports
 import Button from '@mui/material/Button';
