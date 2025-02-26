@@ -1,3 +1,6 @@
+// ** Redux Imports
+import { useSelector } from 'react-redux';
+
 // ** Router Imports
 import { Link, useLocation } from 'react-router-dom';
 
@@ -18,7 +21,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import SidebarItems from './SidebarItems';
 
 const Sidebar = ({ isOpen, toggleSidebar, isTemporary }) => {
+  // ** Vars
   const location = useLocation();
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <Drawer
@@ -68,39 +73,42 @@ const Sidebar = ({ isOpen, toggleSidebar, isTemporary }) => {
           const isActive = location.pathname === item.path;
 
           return (
-            <ListItemButton
-              key={index}
-              component={Link}
-              to={item.path}
-              sx={{
-                backgroundColor: isActive ? '#1976D2' : 'transparent',
-                color: isActive ? 'white' : 'inherit',
-                '&:hover': {
-                  backgroundColor: isActive ? '#1565C0' : '#eaeaff0d',
-                },
-                borderRadius: '5px',
-                margin: '5px',
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-              onClick={() => {
-                if (isTemporary) toggleSidebar();
-              }}
-            >
-              <ListItemIcon
+            user?.role &&
+            item.roles.includes(user.role) && (
+              <ListItemButton
+                key={index}
+                component={Link}
+                to={item.path}
                 sx={{
+                  backgroundColor: isActive ? '#1976D2' : 'transparent',
                   color: isActive ? 'white' : 'inherit',
-                  minWidth: 'auto',
+                  '&:hover': {
+                    backgroundColor: isActive ? '#1565C0' : '#eaeaff0d',
+                  },
+                  borderRadius: '5px',
+                  margin: '5px',
                   display: 'flex',
                   justifyContent: 'center',
-                  alignItems: 'center',
-                  mr: isOpen ? 2 : 0,
+                }}
+                onClick={() => {
+                  if (isTemporary) toggleSidebar();
                 }}
               >
-                {item.icon}
-              </ListItemIcon>
-              {isOpen && <ListItemText primary={item.text} />}
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    color: isActive ? 'white' : 'inherit',
+                    minWidth: 'auto',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    mr: isOpen ? 2 : 0,
+                  }}
+                >
+                  {item.icon}
+                </ListItemIcon>
+                {isOpen && <ListItemText primary={item.text} />}
+              </ListItemButton>
+            )
           );
         })}
       </List>
