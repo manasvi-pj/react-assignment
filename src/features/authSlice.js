@@ -3,8 +3,10 @@ import toast from 'react-hot-toast';
 import { strings } from '../constants/strings';
 
 const defaultUsers = [
-  { username: 'admin', password: 'Admin@1234', role: 'admin' },
-  { username: 'user', password: 'User@1234', role: 'user' },
+  { username: 'manasvi', password: 'Manasvi@1234', role: 'admin' },
+  { username: 'shivali', password: 'Shivali@1234', role: 'admin' },
+  { username: 'parita', password: 'Parita@1234', role: 'user' },
+  { username: 'jiya', password: 'Jiya@1234', role: 'user' },
 ];
 
 export const login = createAsyncThunk('auth/login', async (data) => {

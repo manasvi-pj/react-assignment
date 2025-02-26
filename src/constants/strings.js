@@ -33,4 +33,14 @@ export const strings = {
   errorNotFound: '401',
   errorNotFoundTitle: 'Page Not Found ⚠️',
   errorNotFoundDesc: `We couldn't find the page you are looking for`,
+
+  // ** Strings
+  add: 'add',
+  productDetails: 'Product Details',
+  productNameLabel: 'Name',
+  productCategoryLabel: 'Category',
+  productPriceLabel: 'Price',
+  productStockLabel: 'Stock',
+  productCreatedByLabel: 'Created By',
+  productDescriptionLabel: 'Description',
 };
