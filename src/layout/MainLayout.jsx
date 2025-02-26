@@ -1,5 +1,6 @@
 // ** React Imports
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 
 // ** MUI Imports
 import { Box, useMediaQuery, useTheme } from '@mui/material';
@@ -8,7 +9,7 @@ import { Box, useMediaQuery, useTheme } from '@mui/material';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Header from '../components/Header/Header';
 
-const MainLayout = ({ children }) => {
+const MainLayout = () => {
   // ** States
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
@@ -60,7 +61,9 @@ const MainLayout = ({ children }) => {
         />
 
         {/* Main Content Wrapper */}
-        <Box sx={{ p: 3 }}>{children}</Box>
+        <Box sx={{ p: 3 }}>
+          <Outlet />
+        </Box>
       </Box>
     </Box>
   );
