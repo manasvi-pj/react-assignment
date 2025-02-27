@@ -13,7 +13,11 @@ const PublicRoute = ({ children }) => {
     if (isAuthenticated) {
       // ** Redirect back if already logged in and trying to access "/login"
       if (location.pathname === '/login') {
-        navigate(-1);
+        if (user?.role === 'admin') {
+          navigate('/');
+        } else {
+          navigate('/products');
+        }
       }
     }
   }, [isAuthenticated, navigate, location, user?.role]);
