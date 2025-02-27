@@ -20,6 +20,9 @@ import CloseIcon from '@mui/icons-material/Close';
 // ** Sidebar Imports
 import SidebarItems from './SidebarItems';
 
+// ** Styles Imports
+import * as styles from '../../styles-page/sidebar';
+
 const Sidebar = ({ isOpen, toggleSidebar, isTemporary }) => {
   // ** Vars
   const location = useLocation();
@@ -33,42 +36,18 @@ const Sidebar = ({ isOpen, toggleSidebar, isTemporary }) => {
       ModalProps={{
         keepMounted: true,
       }}
-      sx={{
-        zIndex: isTemporary ? 1301 : 1200,
-        '& .MuiDrawer-paper': {
-          width: isOpen ? 250 : 54,
-          transition: 'width 0.3s',
-          overflowX: 'hidden',
-          backgroundColor: '#282a42',
-          color: 'white',
-        },
-      }}
+      sx={styles.drawer(isTemporary, isOpen)}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: isOpen ? 'flex-end' : 'center',
-          p: 1,
-        }}
-      >
+      <Box sx={styles.box(isOpen)}>
         <IconButton
           onClick={toggleSidebar}
-          sx={{
-            color: 'white',
-            transition: 'transform 0.3s ease-in-out',
-            ...(!isTemporary
-              ? { transform: isOpen ? 'rotate(0deg)' : 'rotate(180deg)' }
-              : {}),
-            '&:hover': {
-              backgroundColor: '#eaeaff0d',
-            },
-          }}
+          sx={styles.arrow(isTemporary, isOpen)}
         >
           {!isTemporary ? <KeyboardDoubleArrowLeftIcon /> : <CloseIcon />}
         </IconButton>
       </Box>
 
-      <List sx={{ py: 0 }}>
+      <List sx={styles.list}>
         {SidebarItems.map((item, index) => {
           const isActive = location.pathname === item.path;
 
@@ -79,31 +58,12 @@ const Sidebar = ({ isOpen, toggleSidebar, isTemporary }) => {
                 key={index}
                 component={Link}
                 to={item.path}
-                sx={{
-                  backgroundColor: isActive ? '#1976D2' : 'transparent',
-                  color: isActive ? 'white' : 'inherit',
-                  '&:hover': {
-                    backgroundColor: isActive ? '#1565C0' : '#eaeaff0d',
-                  },
-                  borderRadius: '5px',
-                  margin: '5px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}
+                sx={styles.listItemButton(isActive)}
                 onClick={() => {
                   if (isTemporary) toggleSidebar();
                 }}
               >
-                <ListItemIcon
-                  sx={{
-                    color: isActive ? 'white' : 'inherit',
-                    minWidth: 'auto',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    mr: isOpen ? 2 : 0,
-                  }}
-                >
+                <ListItemIcon sx={styles.listItemIcon(isActive, isOpen)}>
                   {item.icon}
                 </ListItemIcon>
                 {isOpen && <ListItemText primary={item.text} />}

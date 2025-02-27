@@ -1,6 +1,9 @@
 // ** MUI Imports
 import { Box, CircularProgress } from '@mui/material';
 
+// ** Styles Imports
+import * as styles from '../../styles-page/styles';
+
 const LoadingScreen = () => {
   return (
     <Box
@@ -10,7 +13,7 @@ const LoadingScreen = () => {
       justifyContent={'center'}
       alignItems={'center'}
     >
-      <CircularProgress color='primary' sx={{ height: '100vh' }} />
+      <CircularProgress color='primary' sx={styles.loader} />
     </Box>
   );
 };

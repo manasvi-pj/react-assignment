@@ -12,6 +12,9 @@ import CloseIcon from '@mui/icons-material/Close';
 // ** Constant Imports
 import { strings } from '../../constants/strings';
 
+// ** Styles Imports
+import * as styles from '../../styles-page/products';
+
 const ProductDetailsModal = ({ open, handleClose, product }) => {
   if (!product) return null;
 
@@ -34,39 +37,32 @@ const ProductDetailsModal = ({ open, handleClose, product }) => {
         <Divider />
 
         <Box display={'flex'} alignItems={'baseline'} gap={1} mt={1}>
-          <Typography
-            variant='subtitle1'
-            fontWeight={600}
-            sx={{ minWidth: 95 }}
-          >
+          <Typography variant='subtitle1' fontWeight={600} sx={styles.title}>
             {strings.productNameLabel}
           </Typography>
           <Typography
             variant='body1'
             color={'textSecondary'}
-            sx={{ wordBreak: 'break-all' }}
+            textTransform={'capitalize'}
+            sx={styles.wordBreak}
           >
             {product.name || '-'}
           </Typography>
         </Box>
         <Box display={'flex'} alignItems={'baseline'} gap={1}>
-          <Typography
-            variant='subtitle1'
-            fontWeight={600}
-            sx={{ minWidth: 95 }}
-          >
+          <Typography variant='subtitle1' fontWeight={600} sx={styles.title}>
             {strings.productCategoryLabel}
           </Typography>
-          <Typography variant='body1' color={'textSecondary'}>
+          <Typography
+            variant='body1'
+            color={'textSecondary'}
+            textTransform={'capitalize'}
+          >
             {product.category || '-'}
           </Typography>
         </Box>
         <Box display={'flex'} alignItems={'baseline'} gap={1}>
-          <Typography
-            variant='subtitle1'
-            fontWeight={600}
-            sx={{ minWidth: 95 }}
-          >
+          <Typography variant='subtitle1' fontWeight={600} sx={styles.title}>
             {strings.productPriceLabel}
           </Typography>
           <Typography variant='body1' color={'textSecondary'}>
@@ -74,11 +70,7 @@ const ProductDetailsModal = ({ open, handleClose, product }) => {
           </Typography>
         </Box>
         <Box display={'flex'} alignItems={'baseline'} gap={1}>
-          <Typography
-            variant='subtitle1'
-            fontWeight={600}
-            sx={{ minWidth: 95 }}
-          >
+          <Typography variant='subtitle1' fontWeight={600} sx={styles.title}>
             {strings.productStockLabel}
           </Typography>
           <Typography variant='body1' color={'textSecondary'}>
@@ -86,11 +78,7 @@ const ProductDetailsModal = ({ open, handleClose, product }) => {
           </Typography>
         </Box>
         <Box display={'flex'} alignItems={'baseline'} gap={1}>
-          <Typography
-            variant='subtitle1'
-            fontWeight={600}
-            sx={{ minWidth: 95 }}
-          >
+          <Typography variant='subtitle1' fontWeight={600} sx={styles.title}>
             {strings.productCreatedByLabel}
           </Typography>
           <Typography
@@ -102,17 +90,13 @@ const ProductDetailsModal = ({ open, handleClose, product }) => {
           </Typography>
         </Box>
         <Box display={'flex'} alignItems={'baseline'} gap={1}>
-          <Typography
-            variant='subtitle1'
-            fontWeight={600}
-            sx={{ minWidth: 95 }}
-          >
+          <Typography variant='subtitle1' fontWeight={600} sx={styles.title}>
             {strings.productDescriptionLabel}
           </Typography>
           <Typography
             variant='body1'
             color={'textSecondary'}
-            sx={{ wordBreak: 'break-all' }}
+            sx={styles.wordBreak}
           >
             {product.description || 'No description available'}
           </Typography>

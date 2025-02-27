@@ -19,6 +19,9 @@ import {
   FormControl,
 } from '@mui/material';
 
+// ** Styles Imports
+import * as styles from '../../styles-page/products';
+
 const defaultValues = {
   name: '',
   price: '',
@@ -65,7 +68,7 @@ const ProductForm = ({ open, editData, onClose, onSave }) => {
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth={'sm'}>
-      <DialogTitle sx={{ textAlign: 'center', fontWeight: 'bold' }}>
+      <DialogTitle sx={styles.dialogTitle}>
         {editData ? 'Edit Product' : 'Add New Product'}
       </DialogTitle>
       <DialogContent>
@@ -115,7 +118,7 @@ const ProductForm = ({ open, editData, onClose, onSave }) => {
               }}
               render={({ field }) => (
                 <TextField
-                  sx={{ mt: 0.5 }}
+                  sx={styles.textField}
                   {...field}
                   label='Price'
                   type='number'
@@ -143,7 +146,7 @@ const ProductForm = ({ open, editData, onClose, onSave }) => {
               }}
               render={({ field }) => (
                 <TextField
-                  sx={{ mt: 0.5 }}
+                  sx={styles.textField}
                   {...field}
                   label='Category'
                   variant='outlined'
@@ -171,7 +174,7 @@ const ProductForm = ({ open, editData, onClose, onSave }) => {
               }}
               render={({ field }) => (
                 <TextField
-                  sx={{ mt: 0.5 }}
+                  sx={styles.textField}
                   {...field}
                   type='number'
                   label='Stock Quantity'
@@ -192,7 +195,7 @@ const ProductForm = ({ open, editData, onClose, onSave }) => {
               control={control}
               render={({ field }) => (
                 <TextField
-                  sx={{ mt: 0.5 }}
+                  sx={styles.textField}
                   {...field}
                   label='Description'
                   variant='outlined'
@@ -211,7 +214,7 @@ const ProductForm = ({ open, editData, onClose, onSave }) => {
           </FormControl>
         </Box>
       </DialogContent>
-      <DialogActions sx={{ pb: 3, pr: 3 }}>
+      <DialogActions sx={styles.dialogActions}>
         <Button
           onClick={handleSubmit(onSubmit)}
           color='primary'

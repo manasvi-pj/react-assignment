@@ -2,12 +2,15 @@
 import { Box, Typography, Grid, Card, CardContent } from '@mui/material';
 
 // ** Redux Imports
-import { useSelector } from 'react-redux'; // If you're using Redux
+import { useSelector } from 'react-redux';
+
+// ** Styles Imports
+import * as styles from '../styles-page/styles';
 
 const AdminDashboard = () => {
   // ** Vars
-  const user = useSelector((state) => state.auth.user); // Assuming products are stored in Redux
-  const products = useSelector((state) => state.products); // Assuming products are stored in Redux
+  const user = useSelector((state) => state.auth.user);
+  const products = useSelector((state) => state.products);
   const totalProducts = products.length;
   const totalStock = products.reduce(
     (acc, item) => Number(acc) + Number(item.stockQuantity),
@@ -66,7 +69,7 @@ const AdminDashboard = () => {
         {/* Dashboard Cards */}
         {data?.map((item, index) => (
           <Grid key={index} item xs={12} sm={6} md={4}>
-            <Card sx={{ borderTop: `5px solid ${item.color}` }}>
+            <Card sx={styles.card(item.color)}>
               <CardContent>
                 <Typography variant='h5' fontWeight={600}>
                   {item.title}

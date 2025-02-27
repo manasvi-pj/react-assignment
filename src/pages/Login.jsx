@@ -71,7 +71,7 @@ const Login = () => {
 
   // ** Submit function
   const onSubmit = async (data) => {
-    const result = await dispatch(login(data)).unwrap(); // `unwrap()` gets returned state
+    const result = await dispatch(login(data)).unwrap(); // ** `unwrap()` gets returned state
     if (result.isAuthenticated) {
       navigate(result.user.role === 'admin' ? '/' : '/products');
     }
@@ -189,7 +189,10 @@ const Login = () => {
               </FormControl>
 
               <FormControl fullWidth sx={styles.formMargin}>
-                <InputLabel error={Boolean(errors.role)}>
+                <InputLabel
+                  size={isTabletView ? 'small' : 'medium'}
+                  error={Boolean(errors.role)}
+                >
                   {strings.roleLabel}
                 </InputLabel>
                 <Controller
@@ -202,6 +205,7 @@ const Login = () => {
                       label={strings.roleLabel}
                       variant='outlined'
                       error={Boolean(errors.role)}
+                      size={isTabletView ? 'small' : 'medium'}
                     >
                       <MenuItem value='admin'>{strings.adminLabel}</MenuItem>
                       <MenuItem value='user'>{strings.userLabel}</MenuItem>

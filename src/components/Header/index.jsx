@@ -21,6 +21,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 // ** Redux Imports
 import { logout } from '../../features/authSlice';
 
+// ** Styles Imports
+import * as styles from '../../styles-page/header';
+
 const Header = ({ toggleSidebar, isMdOrSmaller }) => {
   // ** State
   const [anchorEl, setAnchorEl] = useState(null);
@@ -37,43 +40,18 @@ const Header = ({ toggleSidebar, isMdOrSmaller }) => {
   };
 
   return (
-    <AppBar
-      position='sticky'
-      sx={{
-        width: '100%',
-        transition: 'width 0.3s ease-in-out, margin-left 0.3s ease-in-out',
-        background: 'primary',
-        zIndex: 1201,
-        boxShadow: '0 4px 8px -4px black',
-        borderBottomLeftRadius: 15,
-        borderBottomRightRadius: 15,
-        overflow: 'hidden',
-      }}
-    >
-      <Toolbar
-        sx={{
-          display: 'flex',
-          justifyContent: isMdOrSmaller ? 'space-between' : 'end',
-        }}
-      >
+    <AppBar position='sticky' sx={styles.appBar}>
+      <Toolbar sx={styles.toolBar(isMdOrSmaller)}>
         {/* Show Menu Button in Small Screens */}
         {isMdOrSmaller && (
-          <IconButton onClick={toggleSidebar} sx={{ color: 'white', mr: 2 }}>
+          <IconButton onClick={toggleSidebar} sx={styles.menuIcon}>
             <MenuIcon />
           </IconButton>
         )}
 
         <Box>
           <IconButton onClick={(e) => setAnchorEl(e.currentTarget)}>
-            <Avatar
-              sx={{
-                textTransform: 'capitalize',
-                fontWeight: 700,
-                backgroundColor: '#9a9090',
-              }}
-              alt={user?.role}
-              src='/profile.jpg'
-            />
+            <Avatar sx={styles.avatar} alt={user?.role} src='/profile.jpg' />
           </IconButton>
           <Menu
             anchorEl={anchorEl}

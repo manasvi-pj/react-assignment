@@ -1,26 +1,30 @@
-export const customImage = {
-  width: 38,
-  height: 38,
+// ** Dashboard
+export const card = (color) => ({
+  borderTop: `5px solid ${color}`,
+});
+
+// ** Loader
+export const loader = {
+  height: '100vh',
 };
 
-export const customWithoutImage = {
-  width: 38,
-  height: 38,
-  fontSize: '1rem',
-  textTransform: 'uppercase',
+// ** Main Layout
+export const layoutBox = {
+  display: 'flex',
+  width: '100vw',
+  height: '100vh',
+  overflow: 'hidden',
 };
 
-export const paddingOfIcon = {
-  p: 1.5,
-};
+export const contentMainBox = (isMdOrSmaller, sidebarWidth) => ({
+  flexGrow: 1,
+  transition: 'margin 0.3s ease-in-out, width 0.3s ease-in-out',
+  marginLeft: isMdOrSmaller ? 0 : `${sidebarWidth}px`,
+  width: `calc(100vw - ${isMdOrSmaller ? '0px' : `${sidebarWidth}px`})`,
+  maxWidth: `calc(100% -  ${isMdOrSmaller ? '0px' : `${sidebarWidth}px`})`,
+  overflowX: 'hidden',
+});
 
-export const dataGrid = {
-  boxShadow: 2,
-  '& .MuiDataGrid-columnHeader': {
-    backgroundColor: '#f5f5f7',
-  },
-  '& .MuiPagination-root': {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+export const content = {
+  p: 3,
 };

@@ -10,7 +10,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Toaster } from 'react-hot-toast';
 import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react'; // Import PersistGate
+import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
 
 const baseTheme = createTheme();

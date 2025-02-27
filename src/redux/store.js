@@ -1,24 +1,24 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-import rootReducer from './rootReducer'
+import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import rootReducer from './rootReducer';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth', 'products'] // Persist these keys
-}
+  whitelist: ['auth', 'products'], // ** Persist these keys
+};
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false
-    })
-})
+      serializableCheck: false,
+    }),
+});
 
-const persistor = persistStore(store) // Persistor instance
+const persistor = persistStore(store);
 
-export { store, persistor }
+export { store, persistor };

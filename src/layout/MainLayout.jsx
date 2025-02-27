@@ -9,6 +9,9 @@ import { Box, useMediaQuery, useTheme } from '@mui/material';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Header from '../components/Header';
 
+// ** Styles Imports
+import * as styles from '../styles-page/styles';
+
 const MainLayout = () => {
   // ** States
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -20,14 +23,7 @@ const MainLayout = () => {
   const isMdOrSmaller = useMediaQuery(theme.breakpoints.down('lg'));
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        width: '100vw',
-        height: '100vh',
-        overflow: 'hidden',
-      }}
-    >
+    <Box sx={styles.layoutBox}>
       {/* Sidebar */}
       <Sidebar
         isOpen={isMdOrSmaller ? isMobileSidebarOpen : isSidebarOpen}
@@ -40,16 +36,7 @@ const MainLayout = () => {
       />
 
       {/* Main Content */}
-      <Box
-        sx={{
-          flexGrow: 1,
-          transition: 'margin 0.3s ease-in-out, width 0.3s ease-in-out',
-          marginLeft: isMdOrSmaller ? 0 : `${sidebarWidth}px`,
-          width: `calc(100vw - ${isMdOrSmaller ? '0px' : `${sidebarWidth}px`})`,
-          maxWidth: `calc(100% -  ${isMdOrSmaller ? '0px' : `${sidebarWidth}px`})`,
-          overflowX: 'hidden',
-        }}
-      >
+      <Box sx={styles.contentMainBox(isMdOrSmaller, sidebarWidth)}>
         {/* Header */}
         <Header
           toggleSidebar={() =>
@@ -61,7 +48,7 @@ const MainLayout = () => {
         />
 
         {/* Main Content Wrapper */}
-        <Box sx={{ p: 3 }}>
+        <Box sx={styles.content}>
           <Outlet />
         </Box>
       </Box>

@@ -27,7 +27,7 @@ import { useDebouncedValue } from '../hooks/useDebounce';
 import { Icon } from '@iconify/react';
 
 // ** Styles Imports
-import * as styles from '../styles-page/styles';
+import * as styles from '../styles-page/products';
 
 const Products = () => {
   // ** States
@@ -252,7 +252,6 @@ const Products = () => {
         getRowId={(row) => row?.name}
         rows={filteredProducts || []}
         columns={columns}
-        rowCount={filteredProducts?.length}
         initialState={{
           pagination: {
             paginationModel: {
