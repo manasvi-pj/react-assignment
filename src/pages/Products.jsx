@@ -266,7 +266,7 @@ const Products = () => {
           setPage(newPageSize.page);
         }}
         rowsPerPageOptions={[5, 10, 20]}
-        checkboxSelection
+        checkboxSelection={user?.role === 'admin' ? true : false}
         onRowSelectionModelChange={(newSelection) =>
           setSelectedRows(newSelection)
         }

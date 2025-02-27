@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 
 export const viewProduct = createAsyncThunk(
   'products/viewProduct',
@@ -26,6 +27,7 @@ const productsSlice = createSlice({
       };
       state.push(newProduct);
       reassignIDs(state);
+      toast.success('Product added successfully !');
     },
     updateProduct: (state, action) => {
       const { id, updatedProduct } = action.payload;
@@ -34,6 +36,7 @@ const productsSlice = createSlice({
         state[taskIndex] = { id, ...updatedProduct };
         reassignIDs(state);
       }
+      toast.success('Product updated successfully !');
     },
     deleteProduct: (state, action) => {
       const index = state.findIndex((product) => product.id === action.payload);
@@ -41,6 +44,7 @@ const productsSlice = createSlice({
         state.splice(index, 1);
         reassignIDs(state);
       }
+      toast.success('Product deleted successfully !');
     },
     clearAllProducts: (state) => {
       state.length = 0;

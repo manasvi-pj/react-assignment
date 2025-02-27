@@ -14,7 +14,6 @@ import { PersistGate } from 'redux-persist/integration/react'; // Import Persist
 import { store, persistor } from './redux/store';
 
 const baseTheme = createTheme();
-// const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -39,9 +38,6 @@ createRoot(document.getElementById('root')).render(
         containerStyle={{
           top: 50,
         }}
-        // containerStyle={{
-        //   top: isAuthenticated ? 120 : 50
-        // }}
         toastOptions={{ className: 'react-hot-toast' }}
       />
       <Provider store={store}>
