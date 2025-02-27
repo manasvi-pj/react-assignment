@@ -36,6 +36,7 @@ export const strings = {
 
   // ** Strings
   add: 'add',
+  delete: 'Delete',
   productDetails: 'Product Details',
   productNameLabel: 'Name',
   productCategoryLabel: 'Category',

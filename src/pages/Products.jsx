@@ -38,6 +38,7 @@ const Products = () => {
   const [searchText, setSearchText] = useState('');
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
+  const [selectedRows, setSelectedRows] = useState([]);
 
   const searchTasks = (products, searchQuery) => {
     // ** If search query is empty, return all products
@@ -78,6 +79,11 @@ const Products = () => {
 
   const handleDelete = (id) => {
     dispatch(deleteProduct(id));
+  };
+
+  const handleDeleteSelected = () => {
+    selectedRows.forEach((id) => dispatch(deleteProduct(id)));
+    setSelectedRows([]);
   };
 
   const handleEdit = async (id) => {
@@ -210,24 +216,35 @@ const Products = () => {
     <Box>
       <Box
         display={'flex'}
-        justifyContent={'end'}
+        justifyContent={selectedRows.length > 0 ? 'space-between' : 'end'}
         flexWrap={'wrap'}
         py={3}
         gap={1}
       >
-        <TextField
-          variant='outlined'
-          placeholder='Search...'
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-          size='small'
-          sx={{ width: 300 }}
-        />
-        {user.role === 'admin' && (
-          <Button variant='contained' color='primary' onClick={handleOpen}>
-            {strings.add}
+        {user.role === 'admin' && selectedRows.length > 0 && (
+          <Button
+            variant='contained'
+            color='secondary'
+            onClick={handleDeleteSelected}
+          >
+            {strings.delete}
           </Button>
         )}
+        <Box display={'flex'} gap={1}>
+          <TextField
+            variant='outlined'
+            placeholder='Search...'
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            size='small'
+            sx={{ width: 300 }}
+          />
+          {user.role === 'admin' && (
+            <Button variant='contained' color='primary' onClick={handleOpen}>
+              {strings.add}
+            </Button>
+          )}
+        </Box>
       </Box>
       <DataGrid
         sx={styles.dataGrid}
@@ -249,6 +266,10 @@ const Products = () => {
           setPage(newPageSize.page);
         }}
         rowsPerPageOptions={[5, 10, 20]}
+        checkboxSelection
+        onRowSelectionModelChange={(newSelection) =>
+          setSelectedRows(newSelection)
+        }
         disableSelectionOnClick
         disableRowSelectionOnClick
       />
