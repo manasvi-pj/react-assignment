@@ -232,12 +232,12 @@ const Products = () => {
         )}
         <Box display={'flex'} gap={1}>
           <TextField
+            fullWidth
             variant='outlined'
             placeholder='Search...'
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
             size='small'
-            sx={{ width: 300 }}
           />
           {user.role === 'admin' && (
             <Button variant='contained' color='primary' onClick={handleOpen}>
