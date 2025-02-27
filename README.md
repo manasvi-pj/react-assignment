@@ -1,8 +1,14 @@
-# React + Vite
+## React Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Required to run project
 
-Currently, two official plugins are available:
+Node : v22.13.1 (LTS)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Follow below steps to run project in local
+
+Step 1: Clone project
+
+Step 2: Install project dependencies ( npm install / yarn install )
+
+Step 3: Run project ( npm run dev / yarn dev ).
+
