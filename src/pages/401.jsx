@@ -42,7 +42,7 @@ const Error401 = () => {
           </Typography>
         </Styled.BoxWrapper>
         <Styled.ImgTag alt='error-illustration' src='/401.png' />
-        <Button variant='contained' onClick={() => navigate(-2)}>
+        <Button variant='contained' onClick={() => navigate(-3)}>
           {strings.backToHome}
         </Button>
       </Box>

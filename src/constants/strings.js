@@ -30,7 +30,7 @@ export const strings = {
   unauthorizedTitle: 'You are not authorized! 🔐',
   unauthorizedDesc: `You don't have permission to access this page. Go Home!`,
   backToHome: 'Back to Home',
-  errorNotFound: '401',
+  errorNotFound: '404',
   errorNotFoundTitle: 'Page Not Found ⚠️',
   errorNotFoundDesc: `We couldn't find the page you are looking for`,
 
