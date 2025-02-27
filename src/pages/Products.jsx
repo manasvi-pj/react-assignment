@@ -1,33 +1,32 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 // ** React Imports
-import React, { useState } from 'react';
+import { useState } from "react";
 
 // ** Redux Imports
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import {
   addProduct,
   deleteProduct,
   updateProduct,
   viewProduct,
-} from '../features/productsSlice';
+} from "../features/productsSlice";
 
 // ** MUI Imports
-import { DataGrid } from '@mui/x-data-grid';
-import { Button, Box, TextField, IconButton } from '@mui/material';
+import { DataGrid } from "@mui/x-data-grid";
+import { Button, Box, TextField, IconButton } from "@mui/material";
 
 // ** Constant Imports
-import { strings } from '../constants/strings';
+import { strings } from "../constants/strings";
 
 // ** Component Imports
-import ProductModal from '../components/Products/ProductForm';
-import ProductDetailsModal from '../components/Products/ProductDetails';
-import { useDebouncedValue } from '../hooks/useDebounce';
+import ProductModal from "../components/Products/ProductForm";
+import ProductDetailsModal from "../components/Products/ProductDetails";
+import { useDebouncedValue } from "../hooks/useDebounce";
 
 // ** Icon Imports
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
 
 // ** Styles Imports
-import * as styles from '../styles-page/products';
+import * as styles from "../styles-page/products";
 
 const Products = () => {
   // ** States
@@ -35,7 +34,7 @@ const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [productDetailsOpen, setProductDetails] = useState(false);
   const [editData, setEditData] = useState(null);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [selectedRows, setSelectedRows] = useState([]);
@@ -46,9 +45,9 @@ const Products = () => {
 
     return products.filter((product) =>
       Object.values(product)
-        .join(' ')
+        .join(" ")
         .toLowerCase()
-        .includes(searchQuery.toLowerCase())
+        .includes(searchQuery.toLowerCase()),
     );
   };
 
@@ -106,70 +105,70 @@ const Products = () => {
 
   const columns = [
     {
-      field: 'no',
-      headerName: 'Sr No.',
+      field: "no",
+      headerName: "Sr No.",
       minWidth: 70,
       width: 70,
       sortable: false,
       flex: 0.3,
     },
     {
-      field: 'name',
-      headerName: 'Product Name',
+      field: "name",
+      headerName: "Product Name",
       minWidth: 200,
       sortable: false,
       flex: 1,
     },
     {
-      field: 'category',
-      headerName: 'Category',
+      field: "category",
+      headerName: "Category",
       minWidth: 170,
       sortable: false,
       flex: 0.7,
     },
     {
-      field: 'price',
-      headerName: 'Price',
-      type: 'number',
-      align: 'left',
-      headerAlign: 'left',
+      field: "price",
+      headerName: "Price",
+      type: "number",
+      align: "left",
+      headerAlign: "left",
       minWidth: 100,
       flex: 0.6,
     },
     {
-      field: 'stockQuantity',
-      headerName: 'Stock',
+      field: "stockQuantity",
+      headerName: "Stock",
       minWidth: 100,
       sortable: false,
       flex: 0.6,
       renderCell: (params) => {
         const stock = params.value;
-        let color = 'black'; // ** Default color
+        let color = "black"; // ** Default color
 
         if (stock <= 5) {
-          color = 'red'; // ** Low stock warning
+          color = "red"; // ** Low stock warning
         } else if (stock > 5 && stock <= 10) {
-          color = 'orange'; // ** Medium stock
+          color = "orange"; // ** Medium stock
         } else {
-          color = 'green'; // ** Sufficient stock
+          color = "green"; // ** Sufficient stock
         }
 
-        return <span style={{ color, fontWeight: 'bold' }}>{stock}</span>;
+        return <span style={{ color, fontWeight: "bold" }}>{stock}</span>;
       },
     },
     {
-      field: 'createdBy',
-      headerName: 'Created By',
+      field: "createdBy",
+      headerName: "Created By",
       minWidth: 130,
       sortable: false,
       flex: 0.7,
       valueGetter: (params) =>
         params?.username.charAt(0).toUpperCase() + params?.username.slice(1) ||
-        'N/A',
+        "N/A",
     },
     {
-      field: 'actions',
-      headerName: 'Actions',
+      field: "actions",
+      headerName: "Actions",
       minWidth: 170,
       sortable: false,
       flex: 0.5,
@@ -181,9 +180,9 @@ const Products = () => {
               handleOpenModal(params?.row);
             }}
           >
-            <Icon icon='mdi:eye-outline' fontSize='1.25rem' />
+            <Icon icon="mdi:eye-outline" fontSize="1.25rem" />
           </IconButton>
-          {user.role === 'admin' && (
+          {user.role === "admin" && (
             <>
               <IconButton
                 sx={styles.paddingOfIcon}
@@ -191,7 +190,7 @@ const Products = () => {
                   handleEdit(params.row.id);
                 }}
               >
-                <Icon icon='mdi:pencil-outline' fontSize='1.25rem' />
+                <Icon icon="mdi:pencil-outline" fontSize="1.25rem" />
               </IconButton>
               <IconButton
                 sx={styles.paddingOfIcon}
@@ -200,9 +199,9 @@ const Products = () => {
                 }}
               >
                 <Icon
-                  icon='mdi:delete-outline'
-                  fontSize='1.25rem'
-                  color='red'
+                  icon="mdi:delete-outline"
+                  fontSize="1.25rem"
+                  color="red"
                 />
               </IconButton>
             </>
@@ -215,32 +214,32 @@ const Products = () => {
   return (
     <Box>
       <Box
-        display={'flex'}
-        justifyContent={selectedRows.length > 0 ? 'space-between' : 'end'}
-        flexWrap={'wrap'}
+        display={"flex"}
+        justifyContent={selectedRows.length > 0 ? "space-between" : "end"}
+        flexWrap={"wrap"}
         py={3}
         gap={1}
       >
-        {user.role === 'admin' && selectedRows.length > 0 && (
+        {user.role === "admin" && selectedRows.length > 0 && (
           <Button
-            variant='contained'
-            color='secondary'
+            variant="contained"
+            color="secondary"
             onClick={handleDeleteSelected}
           >
             {strings.delete}
           </Button>
         )}
-        <Box display={'flex'} gap={1}>
+        <Box display={"flex"} gap={1}>
           <TextField
             fullWidth
-            variant='outlined'
-            placeholder='Search...'
+            variant="outlined"
+            placeholder="Search..."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            size='small'
+            size="small"
           />
-          {user.role === 'admin' && (
-            <Button variant='contained' color='primary' onClick={handleOpen}>
+          {user.role === "admin" && (
+            <Button variant="contained" color="primary" onClick={handleOpen}>
               {strings.add}
             </Button>
           )}
@@ -265,7 +264,7 @@ const Products = () => {
           setPage(newPageSize.page);
         }}
         rowsPerPageOptions={[5, 10, 20]}
-        checkboxSelection={user?.role === 'admin' ? true : false}
+        checkboxSelection={user?.role === "admin" ? true : false}
         onRowSelectionModelChange={(newSelection) =>
           setSelectedRows(newSelection)
         }

@@ -1,13 +1,13 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import toast from 'react-hot-toast';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 
 export const viewProduct = createAsyncThunk(
-  'products/viewProduct',
+  "products/viewProduct",
   async (id, { getState }) => {
     const state = getState();
     const product = state.products.find((product) => product.id === id);
     return product;
-  }
+  },
 );
 
 const reassignIDs = (state) => {
@@ -17,7 +17,7 @@ const reassignIDs = (state) => {
 };
 
 const productsSlice = createSlice({
-  name: 'products',
+  name: "products",
   initialState: [],
   reducers: {
     addProduct: (state, action) => {
@@ -27,7 +27,7 @@ const productsSlice = createSlice({
       };
       state.push(newProduct);
       reassignIDs(state);
-      toast.success('Product added successfully !');
+      toast.success("Product added successfully !");
     },
     updateProduct: (state, action) => {
       const { id, updatedProduct } = action.payload;
@@ -36,7 +36,7 @@ const productsSlice = createSlice({
         state[taskIndex] = { id, ...updatedProduct };
         reassignIDs(state);
       }
-      toast.success('Product updated successfully !');
+      toast.success("Product updated successfully !");
     },
     deleteProduct: (state, action) => {
       const index = state.findIndex((product) => product.id === action.payload);
@@ -44,7 +44,7 @@ const productsSlice = createSlice({
         state.splice(index, 1);
         reassignIDs(state);
       }
-      toast.success('Product deleted successfully !');
+      toast.success("Product deleted successfully !");
     },
     clearAllProducts: (state) => {
       state.length = 0;

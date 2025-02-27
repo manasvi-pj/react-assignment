@@ -1,25 +1,25 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import './index.css';
-import App from './App.jsx';
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
 
 // ** MUI Imports
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 // ** Third Party Imports
-import { Toaster } from 'react-hot-toast';
-import { ToastContainer } from 'react-toastify';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './redux/store';
+import { Toaster } from "react-hot-toast";
+import { ToastContainer } from "react-toastify";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./redux/store";
 
 const baseTheme = createTheme();
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ThemeProvider theme={baseTheme}>
       <ToastContainer
-        position='top-right'
+        position="top-right"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -28,17 +28,17 @@ createRoot(document.getElementById('root')).render(
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme='light'
-        className={'react-toastify'}
+        theme="light"
+        className={"react-toastify"}
         closeButton={true}
       />
       <ToastContainer />
       <Toaster
-        position='top-right'
+        position="top-right"
         containerStyle={{
           top: 50,
         }}
-        toastOptions={{ className: 'react-hot-toast' }}
+        toastOptions={{ className: "react-hot-toast" }}
       />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
@@ -46,5 +46,5 @@ createRoot(document.getElementById('root')).render(
         </PersistGate>
       </Provider>
     </ThemeProvider>
-  </StrictMode>
+  </StrictMode>,
 );

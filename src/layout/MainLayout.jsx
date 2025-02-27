@@ -1,16 +1,16 @@
 // ** React Imports
-import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 // ** MUI Imports
-import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 
 // ** Components Imports
-import Sidebar from '../components/Sidebar/Sidebar';
-import Header from '../components/Header';
+import Sidebar from "../components/Sidebar/Sidebar";
+import Header from "../components/Header";
 
 // ** Styles Imports
-import * as styles from '../styles-page/styles';
+import * as styles from "../styles-page/styles";
 
 const MainLayout = () => {
   // ** States
@@ -20,7 +20,7 @@ const MainLayout = () => {
   // ** Vars
   const sidebarWidth = isSidebarOpen ? 251 : 55;
   const theme = useTheme();
-  const isMdOrSmaller = useMediaQuery(theme.breakpoints.down('lg'));
+  const isMdOrSmaller = useMediaQuery(theme.breakpoints.down("lg"));
 
   return (
     <Box sx={styles.layoutBox}>

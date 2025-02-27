@@ -1,14 +1,14 @@
 // ** MUI Imports
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const SidebarItems = [
-  { text: 'Dashboard', icon: <DashboardIcon />, path: '/', roles: ['admin'] },
+  { text: "Dashboard", icon: <DashboardIcon />, path: "/", roles: ["admin"] },
   {
-    text: 'Products',
+    text: "Products",
     icon: <ShoppingCartIcon />,
-    path: '/products',
-    roles: ['admin', 'user'],
+    path: "/products",
+    roles: ["admin", "user"],
   },
 ];
 

@@ -5,12 +5,12 @@ export const paddingOfIcon = {
 
 export const dataGrid = {
   boxShadow: 2,
-  '& .MuiDataGrid-columnHeader': {
-    backgroundColor: '#f5f5f7',
+  "& .MuiDataGrid-columnHeader": {
+    backgroundColor: "#f5f5f7",
   },
-  '& .MuiPagination-root': {
-    justifyContent: 'center',
-    alignItems: 'center',
+  "& .MuiPagination-root": {
+    justifyContent: "center",
+    alignItems: "center",
   },
 };
 
@@ -20,13 +20,13 @@ export const title = {
 };
 
 export const wordBreak = {
-  wordBreak: 'break-all',
+  wordBreak: "break-all",
 };
 
 // ** Product Form
 export const dialogTitle = {
-  textAlign: 'center',
-  fontWeight: 'bold',
+  textAlign: "center",
+  fontWeight: "bold",
 };
 
 export const textField = {

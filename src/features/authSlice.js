@@ -1,19 +1,20 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import toast from 'react-hot-toast';
-import { strings } from '../constants/strings';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
+import { strings } from "../constants/strings";
 
 const defaultUsers = [
-  { username: 'manasvi', password: 'Manasvi@1234', role: 'admin' },
-  { username: 'shivali', password: 'Shivali@1234', role: 'admin' },
-  { username: 'parita', password: 'Parita@1234', role: 'user' },
-  { username: 'jiya', password: 'Jiya@1234', role: 'user' },
+  { username: "manasvi", password: "Manasvi@1234", role: "admin" },
+  { username: "shivali", password: "Shivali@1234", role: "admin" },
+  { username: "parita", password: "Parita@1234", role: "user" },
+  { username: "jiya", password: "Jiya@1234", role: "user" },
 ];
 
-export const login = createAsyncThunk('auth/login', async (data) => {
+export const login = createAsyncThunk("auth/login", async (data) => {
   const { username, password, role } = data;
 
   const user = defaultUsers.find(
-    (u) => u.username === username && u.password === password && u.role === role
+    (u) =>
+      u.username === username && u.password === password && u.role === role,
   );
 
   if (user) {
@@ -29,7 +30,7 @@ export const login = createAsyncThunk('auth/login', async (data) => {
 });
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState: { user: null, isAuthenticated: false },
   reducers: {
     logout: (state) => {

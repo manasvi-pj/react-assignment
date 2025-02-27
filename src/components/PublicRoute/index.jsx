@@ -1,7 +1,7 @@
 // ** React Imports
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const PublicRoute = ({ children }) => {
   // ** Vars
@@ -12,11 +12,11 @@ const PublicRoute = ({ children }) => {
   useEffect(() => {
     if (isAuthenticated) {
       // ** Redirect back if already logged in and trying to access "/login"
-      if (location.pathname === '/login') {
-        if (user?.role === 'admin') {
-          navigate('/');
+      if (location.pathname === "/login") {
+        if (user?.role === "admin") {
+          navigate("/");
         } else {
-          navigate('/products');
+          navigate("/products");
         }
       }
     }

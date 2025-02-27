@@ -1,8 +1,8 @@
 // ** Redux Imports
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 // ** Router Imports
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 
 // ** MUI Imports
 import {
@@ -13,15 +13,15 @@ import {
   ListItemText,
   IconButton,
   Box,
-} from '@mui/material';
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
-import CloseIcon from '@mui/icons-material/Close';
+} from "@mui/material";
+import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
+import CloseIcon from "@mui/icons-material/Close";
 
 // ** Sidebar Imports
-import SidebarItems from './SidebarItems';
+import SidebarItems from "./SidebarItems";
 
 // ** Styles Imports
-import * as styles from '../../styles-page/sidebar';
+import * as styles from "../../styles-page/sidebar";
 
 const Sidebar = ({ isOpen, toggleSidebar, isTemporary }) => {
   // ** Vars
@@ -30,7 +30,7 @@ const Sidebar = ({ isOpen, toggleSidebar, isTemporary }) => {
 
   return (
     <Drawer
-      variant={isTemporary ? 'temporary' : 'permanent'}
+      variant={isTemporary ? "temporary" : "permanent"}
       open={isOpen}
       onClose={toggleSidebar}
       ModalProps={{
